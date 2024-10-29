@@ -47,10 +47,14 @@ func (this *Handler) Handle(args []string) error {
 	}
 	result := this.calculator.Calculate(a, b)
 	_, err = fmt.Fprintf(this.stdout, "%d", result)
-	return err
+	if err != nil {
+		return fmt.Errorf("%w: %w", errOutputWriter, err)
+	}
+	return nil
 }
 
 var (
 	errWrongArgCount   = errors.New("usage: calc <a> <b>")
 	errInvalidArgument = errors.New("invalid argument")
+	errOutputWriter    = errors.New("output failure")
 )
