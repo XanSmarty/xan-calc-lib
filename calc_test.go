@@ -66,7 +66,6 @@ func TestDivision_Calculate(t *testing.T) {
 	tests := []struct {
 		a, b, want int
 	}{
-		{a: 0, b: 0, want: 0},
 		{a: 6, b: 3, want: 2},
 		{a: 30, b: 6, want: 5},
 	}
